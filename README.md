@@ -3,6 +3,8 @@ Favis et al.'s models for Skin Disease Classification
 # Prerequisites
 - download datasets & trained models from GDrive (~ 3-4gb)
 - Python, PIP, Anaconda
+- Clone `mmdet` from [github-mmdet-repo](https://github.com/open-mmlab/mmdetection)
+- Create a parent folder containing both mmdet & this repo
 # Resolving Errors (torch + mmcv + mmdet)
 *Install **within** active environment*
 - `conda create -n "openmmlab"`

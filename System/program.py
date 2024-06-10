@@ -20,6 +20,9 @@ import cv2
 from pathlib import Path
 import PIL
 
+import mmdet
+# print("MMDet is at: ", mmdet.__file__)
+
 catelog={
 		 'ad':'Atopic Dermatitis Eczema',
 		 'ak':'Actinic Keratosis',
@@ -212,8 +215,30 @@ def main():
 	st.subheader("Upload files")
 	st.write("")
 
-	# MODEL AND IMAGE UPLOAD
-	cfgPath = os.path.abspath("./mmdetection/configs/retinanet/retinanet_x101_64x4d_fpn_1x_coco.py")
+	# ---- MODEL AND IMAGE UPLOAD ---- #
+
+	# Update path to where mmdet is installed in your device
+	# Original code assumes models are installed within the same directory
+	# cfgPath = os.path.abspath("./mmdetection/configs/retinanet/retinanet_x101_64x4d_fpn_1x_coco.py")
+
+	mmdet_repo_path = "/Users/v/Desktop/Code/00 THESIS/mmdetection"
+
+	# Current path
+	current_dir = Path(__file__).resolve().parent
+
+	# System -> Skin Disease Classification -> Alumni Thesis 
+	project_root = current_dir.parent.parent.parent
+
+	# mmdet changed naming conventions
+	mmdet_repo_path = project_root/"mmdetection"
+	cfgPath = mmdet_repo_path/"configs/retinanet/retinanet_x101-64x4d_fpn_1x_coco.py"
+	# cfgPath = mmdet_repo_path/"configs/retinanet/retinanet_x101_64x4d_fpn_1x_coco.py"
+	# cfgPath = Path("/Users/v/Desktop/Code/00 THESIS/mmdetection/configs/retinanet/retinanet_x101-64x4d_fpn_1x_coco.py")
+
+	# Verify
+	# print("Is config file reachable: ", cfgPath.exists())
+	cfgPath = str(cfgPath)
+
 	modelPath = ""
 	modelOption = st.selectbox('Select Model:', ('RetinaNet', 'LBP-Retina', 'OCLBP-Retina'))
 	uploaded_file = st.file_uploader("Choose an image...", type="jpg")

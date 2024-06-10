@@ -5,6 +5,7 @@ import math
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+import PIL
 from numpy import asarray
 from PIL import Image
 import torch
@@ -18,9 +19,9 @@ from mmdet.apis import init_detector, inference_detector
 from mmengine.config import Config
 import cv2
 from pathlib import Path
-import PIL
 
 import mmdet
+import torch.backends
 # print("MMDet is at: ", mmdet.__file__)
 
 catelog={
@@ -267,7 +268,10 @@ def main():
 			showPreprocessOC(file_loc, modelOption)
 			modelPath = OCLBP
 		
-		model = init_detector(cfg, modelPath, device='cuda:0')
+		# Verify if MPS Metal is available for Apple Silicon CPUs
+		# device = 'mps' if torch.backends.mps.is_available() else 'cpu'
+
+		model = init_detector(cfg, modelPath, device='cpu')
 		result = inference_detector(model, checkImage(file_loc, modelOption))
 		
 		p,conf,bbox=getBbox(result)

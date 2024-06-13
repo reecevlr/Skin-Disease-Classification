@@ -45,3 +45,6 @@ model = init_detector(cfg, modelPath, device='cpu')
 - [Installation issue w/ mmcv](https://github.com/open-mmlab/mmcv/issues/1055)
 - [Import Issue w/ Config](https://stackoverflow.com/questions/75988459/cannot-import-name-config-from-mmcv-unknown-location)
 - [Assertion Error](https://stackoverflow.com/questions/57814535/assertionerror-torch-not-compiled-with-cuda-enabled-in-spite-upgrading-to-cud)
+- Conda venv does not support 3.7, use python specific venv
+  - [venv guide](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/)
+- shoot me

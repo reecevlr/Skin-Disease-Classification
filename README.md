@@ -2,32 +2,11 @@
 Favis et al.'s models for Skin Disease Classification
 # Prerequisites
 - download datasets & trained models from GDrive (~ 3-4gb)
-- Python, PIP, Anaconda
-- Clone `mmdet` from [github-mmdet-repo](https://github.com/open-mmlab/mmdetection)
-- Create a parent folder containing both mmdet & this repo
-# Resolving Errors (torch + mmcv + mmdet)
+- Python, PIP, Virtual Environment
+# Installing dependencies
 *Install **within** active environment*
-- `conda create -n "openmmlab"`
-- `conda activate openmmlab`
-- `conda env list`
-	- check applicable versions of Python
-- `conda install python=3.x`
-	- select closest version to *Python 3.7*
-- `pip install pillow==9.0.1`
-	- closest compatible version w/ other dependencies
-- `pip install torch==2.0.0 -f https://download.pytorch.org/whl/cu117`
-	- automatically updates to closest compatible version after installing other dependencies
-	- version for devices with GPUs supported by CUDA
-- `pip install -U openmim`
-- `mim install mmengine`
-- `mim install "mmcv>=2.0.0"`
-- `mim install mmdet` \
-*Install supported pytorch*
-- `pip uninstall pytorch torchvision torchaudio` | `conda uninstall pytorch torchvision torchaudio`
-  - specific versions used: `pip install torch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0`
-- `pip cache purge` | `conda clean --all`
-- `pip install pyyaml`
-  - dependency of mmcv and mmengine
+- `pip install -r dependencies.md`
+  - will install all dependencies welcome buddy boy
 ## Updates to Code
 ```
 # reduce imports -> no longer supported
